@@ -1,6 +1,6 @@
 {
-  "/api/*": {
-    "target": "http://94.182.183.196:8000/ws/get_company_info",
+  "/ws": {
+    "target": "http://94.182.183.196:8000",
     "secure": false,
     "logLevel": "debug",
     "sameOrigin": true

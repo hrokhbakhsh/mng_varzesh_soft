@@ -12,6 +12,6 @@ export class AppServiceService {
   constructor(private http: HttpClient) { }
 
   getIp(): Observable<ResponseIpModel> {
-    return this.http.get<ResponseIpModel>(``)
+    return this.http.get<ResponseIpModel>(`${appconfig.api}`);
   }
 }

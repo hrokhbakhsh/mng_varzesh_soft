@@ -14,7 +14,7 @@ export class GetIpPage implements OnInit {
 
     constructor( private formBuilder: FormBuilder , private service: AppServiceService) {
         this.getFormIP = this.formBuilder.group({
-            codeIp: [null, [Validators.required , Validators.max(4)]]
+            codeIp: [null, [Validators.required , Validators.max(9999) , Validators.min(1000)]]
         });
     }
 
@@ -22,7 +22,8 @@ export class GetIpPage implements OnInit {
 
     }
 
-    checkIp() {
-
+   async checkIp() {
+        let res = await this.service.getIp().toPromise() ;
+        console.log(res.data);
     }
 }
