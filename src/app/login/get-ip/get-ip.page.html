@@ -10,8 +10,9 @@
           <ion-label position="floating" class="text-style">مثال 4378</ion-label>
           <ion-input formControlName="codeIp" type="number"></ion-input>
         </ion-item>
-        <ion-button type="submit" class="button" fill="outline" expand="block" color="danger">
-          ارسال کد مجموعه
+        <ion-button  [disabled]="loading" type="submit" type="submit" class="button" fill="outline" expand="block" color="danger">
+          <ion-spinner *ngIf="loading" ></ion-spinner>
+          <span *ngIf="!loading">ارسال کد</span>
         </ion-button>
       </form>
     </ion-card-content>

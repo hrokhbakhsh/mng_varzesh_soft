@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AppServiceService} from '../../services/app-service.service';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +8,18 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginPage implements OnInit {
 
-  loginForm: FormGroup
 
-  constructor( private formBuilder: FormBuilder) {
-    this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required , Validators.max(4)]] ,
-      password: [null, [Validators.required , Validators.max(4)]]
-    });
+
+  constructor(private service: AppServiceService) {
+
   }
 
   ngOnInit() {
   }
 
+
+  getIp() {
+    console.log(this.service.packageUrl) ;
+
+  }
 }

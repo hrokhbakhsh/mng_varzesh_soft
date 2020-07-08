@@ -6,16 +6,16 @@
   `
     <ion-card-content>
 
-      <form [formGroup]="loginForm">
+      <form >
         <ion-item>
           <ion-label position="floating" class="text-style button"  >نام کاربری</ion-label>
-          <ion-input formControlName="username" type="text"></ion-input>
+          <ion-input  type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating"  class="text-style button">رمز ورود</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
+          <ion-input  type="password"></ion-input>
         </ion-item>
-        <ion-button class="button" fill="outline" expand="block" color="danger">
+        <ion-button (click)="getIp()"  class="button" fill="outline" expand="block" color="danger">
           ورود
         </ion-button>
       </form>

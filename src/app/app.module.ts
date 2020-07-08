@@ -10,6 +10,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {AppServiceService} from './services/app-service.service';
+import {SetIpService} from './services/set-ip.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,6 +25,7 @@ import {AppServiceService} from './services/app-service.service';
         StatusBar,
         SplashScreen,
         AppServiceService ,
+        SetIpService ,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
