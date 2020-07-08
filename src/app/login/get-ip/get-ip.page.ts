@@ -14,7 +14,7 @@ export class GetIpPage implements OnInit {
     private getFormIP: FormGroup;
     loading = false;
     isSubmit = false;
-    err: string ;
+    err =false ;
 
 
     constructor(private router: Router , private formBuilder: FormBuilder , private service: AppServiceService) {
@@ -42,27 +42,25 @@ export class GetIpPage implements OnInit {
                    if (ipModel){
                        await this.service.storeUrl(id) ;
                        await this.router.navigate(['/login']) ;
+                       this.err = false
+                       this.loading = false
                    }
                    else {
                        this.loading = false ;
-                       this.err = 'کد نامعتبر' ;
-                       console.log(this.err) ;
+                       this.err = true ;
                    }
 
                }
                else {
                    this.loading = false ;
-                   this.err = 'خطا در ارتباط' ;
-                   console.log(this.err) ;
                }
+               this.isSubmit = true;
 
 
 
            }catch (e) {
                console.log(e);
                this.loading = false ;
-               this.err = 'خطا در ارتباط' ;
-               console.log(this.err) ;
            }
        }
 

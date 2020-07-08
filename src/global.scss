@@ -51,3 +51,15 @@
   src: url("./assets/font/Far_Box_Shade.ttf");
 }
 
+.validation-box{
+  min-height: 15px;
+  width: 100%;
+  font-size: small;
+  color: red;
+  margin-top: 5px;
+  height: 20px;
+  > div{
+    display: inline-flex;
+    align-items: center;
+  }
+}

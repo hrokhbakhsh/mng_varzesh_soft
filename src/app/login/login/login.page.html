@@ -6,14 +6,14 @@
   `
     <ion-card-content>
 
-      <form >
+      <form [formGroup]="form" (ngSubmit)="login()">
         <ion-item>
           <ion-label position="floating" class="text-style button"  >نام کاربری</ion-label>
-          <ion-input  type="text"></ion-input>
+          <ion-input  formControlName="username" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating"  class="text-style button">رمز ورود</ion-label>
-          <ion-input  type="password"></ion-input>
+          <ion-input  formControlName="password" type="password"></ion-input>
         </ion-item>
         <ion-button (click)="getIp()"  class="button" fill="outline" expand="block" color="danger">
           ورود
