@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
     constructor(private service: AppServiceService, private fb: FormBuilder) {
 
         this.form = this.fb.group({
-            username: ['', [Validators.required]],
+            user_name: ['', [Validators.required]],
             password: ['', [Validators.required]]
         });
     }
@@ -26,19 +26,23 @@ export class LoginPage implements OnInit {
     }
 
 
-    async login() {
+     login() {
         // localStorage('url');
         this.sSubmit = true;
         if (this.form.valid) {
-            try {
                 this.loading = true;
-                const res = await this.service.authUser(this.form).toPromise();
-                if (res.status) {
-                    console.log(res.status);
-                }
-            } catch (e) {
-                console.log(e);
-            }
+                const res =  this.service.authUser(this.form.value).subscribe(
+                    res => {
+                        if (res.status){
+                            console.log(res.SystemUserID) ;
+                            this.service.storeUserId(res.SystemUserID);
+                        }
+                        else {
+                            console.log(res.errmessage)
+                        }
+                    } ,
+                    err => console.log(err)
+                );
         }
     }
 }

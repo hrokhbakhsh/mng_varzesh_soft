@@ -22,7 +22,7 @@ export class AppServiceService {
 
     authUser(data: any): Observable<any> {
         const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
-        return this.http.get(`${url}/mng_login`, data);
+        return this.http.post<any>(`${url}/mng_login`, data);
     }
 
     async storeUrl(id) {
@@ -35,5 +35,9 @@ export class AppServiceService {
         } catch (e) {
 
         }
+    }
+    storeUserId(id){
+        localStorage.setItem('userId', id) ;
+        console.log(localStorage.getItem('userId'))
     }
 }
