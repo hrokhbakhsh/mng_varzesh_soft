@@ -15,8 +15,21 @@
           <ion-label position="floating"  class="text-style button">رمز ورود</ion-label>
           <ion-input  formControlName="password" type="password"></ion-input>
         </ion-item>
+        <div class="validation-box">
+          <div *ngIf="form.invalid">&nbsp;</div>
+          <div *ngIf="form.invalid && sSubmit">
+            <ion-icon name="information-circle" size="small"></ion-icon>
+            <span>فیلد خالی را پر کنید</span>
+          </div>
+          <div *ngIf="err && form.valid ">
+            <ion-icon name="information-circle" size="small"></ion-icon>
+            <span>شماره کد وجود ندارد</span>
+          </div>
+        </div>
+
         <ion-button  type="submit" class="button" fill="outline" expand="block" color="danger">
-          ورود
+          <ion-spinner *ngIf="loading" ></ion-spinner>
+          <span *ngIf="!loading">ورود</span>
         </ion-button>
       </form>
     </ion-card-content>

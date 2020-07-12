@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AppServiceService} from '../../services/app-service.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-login',
@@ -12,8 +13,8 @@ export class LoginPage implements OnInit {
     private form: FormGroup;
     loading: boolean = false;
     sSubmit = false;
-
-    constructor(private service: AppServiceService, private fb: FormBuilder) {
+    err =false ;
+    constructor(private service: AppServiceService, private fb: FormBuilder , private router: Router) {
 
         this.form = this.fb.group({
             user_name: ['', [Validators.required]],
@@ -27,22 +28,28 @@ export class LoginPage implements OnInit {
 
 
      login() {
-        // localStorage('url');
         this.sSubmit = true;
         if (this.form.valid) {
                 this.loading = true;
                 const res =  this.service.authUser(this.form.value).subscribe(
                     res => {
                         if (res.status){
-                            console.log(res.SystemUserID) ;
+                            this.router.navigate(['/home'])
                             this.service.storeUserId(res.SystemUserID);
+                            this.loading = false ;
                         }
                         else {
-                            console.log(res.errmessage)
+                            this.err =true ;
+                            this.loading = false ;
+
                         }
                     } ,
-                    err => console.log(err)
-                );
+                    err => {
+                        this.loading = false ;
+
+                    }
+
+        );
         }
     }
 }
