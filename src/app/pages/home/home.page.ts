@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppServiceService} from '../../services/app-service.service';
 
 
 @Component({
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor(private service: AppServiceService) { }
 
   ngOnInit() {
   }
 
 
+    logout() {
+        this.service.logout();
+    }
 }
