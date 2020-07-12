@@ -11,6 +11,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {AppServiceService} from './services/app-service.service';
 import {SetIpService} from './services/set-ip.service';
+import {AuthGuard} from "./services/auth.guard";
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,6 +27,7 @@ import {SetIpService} from './services/set-ip.service';
         SplashScreen,
         AppServiceService ,
         SetIpService ,
+        AuthGuard,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]

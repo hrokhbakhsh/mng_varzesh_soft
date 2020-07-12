@@ -38,6 +38,18 @@ export class AppServiceService {
     }
     storeUserId(id){
         localStorage.setItem('userId', id) ;
-        console.log(localStorage.getItem('userId'))
     }
+    isLogin(): boolean {
+        return localStorage.getItem('userId') != null;
+    }
+
+    isHasUrl(): boolean {
+        return localStorage.getItem('url') != null;
+    }
+    logout() {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('url');
+        return true ;
+    }
+
 }
