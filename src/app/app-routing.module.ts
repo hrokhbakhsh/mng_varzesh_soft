@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from './guard/auth.guard';
 import {UnAuthGuard} from "./guard/un-auth.guard";
+import {IpAuthGuard} from "./guard/ip-auth.guard";
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'get-ip',
+    canActivate: [IpAuthGuard] ,
     loadChildren: () => import('./login/get-ip/get-ip.module').then( m => m.GetIpPageModule)
   },
   {

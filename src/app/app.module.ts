@@ -13,6 +13,7 @@ import {AppServiceService} from './services/app-service.service';
 import {SetIpService} from './services/set-ip.service';
 import {AuthGuard} from './guard/auth.guard';
 import {UnAuthGuard} from './guard/un-auth.guard';
+import {IpAuthGuard} from "./guard/ip-auth.guard";
 
 @NgModule({
     declarations: [AppComponent],
@@ -30,6 +31,7 @@ import {UnAuthGuard} from './guard/un-auth.guard';
         SetIpService ,
         AuthGuard,
         UnAuthGuard ,
+        IpAuthGuard,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
