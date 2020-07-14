@@ -7,7 +7,7 @@ import {IpAuthGuard} from "./guard/ip-auth.guard";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
