@@ -4,6 +4,7 @@ import {ResponseIpModel} from './response-ip-model';
 import {HttpClient} from '@angular/common/http';
 import {appconfig} from '../appconfig';
 import {IpModel} from './ip-model';
+import {ResponseModel} from './response-model';
 
 @Injectable({
     providedIn: 'root'
@@ -50,6 +51,11 @@ export class AppServiceService {
         localStorage.removeItem('userId');
         localStorage.removeItem('url');
         return true ;
+    }
+
+    getAllReport(): Observable<ResponseModel>{
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.get<ResponseModel>(`${url}/mng_get_all_report_status`);
     }
 
 }

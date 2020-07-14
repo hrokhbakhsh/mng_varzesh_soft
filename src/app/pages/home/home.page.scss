@@ -22,3 +22,16 @@ body {
     background-position: 0 400%;
   }
 }
+
+ion-content{
+  --background: url('/assets/back.jpg') no-repeat 100% 100%;
+}
+.ion-justify-content-end{
+  display: flex;
+}
+.font-text{
+  font-family: Lalezar;
+}
+h3{
+  font-family: Elham;
+}

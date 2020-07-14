@@ -1,3 +1,161 @@
-<ion-content>
-    <ion-button (click)="logout()">ok</ion-button>
+<ion-header [translucent]="true">
+    <ion-toolbar class="no-bg">
+
+        <ion-buttons slot="start">
+            <img class="logo-header ion-margin-start" height="24px" src="assets/icon/favicon.png"/>
+        </ion-buttons>
+        <ion-title class="ion-text-center">گزارشات</ion-title>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="main">
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>
+
+                <div class=" ion-justify-content-end">
+
+                    <div class="ion-text-end ion-margin-end">
+                        <ion-icon name="receipt-outline"></ion-icon>
+                    </div>
+                    <div class="ion-text-start font-text">
+                        وضعیت پذیرش
+                    </div>
+                </div>
+            </ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <div class="ion-text-start">
+                            <p class="ion-text-end">{{presentNumber}}</p>
+                            <p class="ion-text-end">{{exitNumber}}</p>
+                        </div>
+                    </ion-col>
+                    <ion-col >
+                        <div class="ion-text-end">
+                            <h3>افراد حاضر</h3>
+                            <h3>افراد خارج شده</h3>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>
+
+                <div class="ion-justify-content-end">
+
+                    <div class="ion-text-end ion-margin-end">
+                        <ion-icon name="card-outline"></ion-icon>
+                    </div>
+                    <div class="ion-text-start font-text">
+                        دریافتی
+                    </div>
+                </div>
+            </ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <div class="ion-text-start">
+                            <p class="ion-text-end">{{SumTotalAmount_Receipt}}</p>
+
+                        </div>
+                    </ion-col>
+                    <ion-col >
+                        <div class="ion-text-end">
+                            <h3>دریافتی های امروز</h3>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>
+
+                <div class="ion-justify-content-end">
+
+                    <div class="ion-text-end ion-margin-end">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                    </div>
+                    <div class="ion-text-start font-text">
+                        عملکرد
+                    </div>
+                </div>
+            </ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <div class="ion-text-start">
+                            <p class="ion-text-end">{{functionTotalAmount}}</p>
+
+                        </div>
+                    </ion-col>
+                    <ion-col >
+                        <div class="ion-text-end">
+                            <h3>عملکرد امروز</h3>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>
+
+                <div class=" ion-justify-content-end">
+
+                    <div class="ion-text-end ion-margin-end">
+                        <ion-icon name="arrow-down-outline"></ion-icon>
+                        <ion-icon name="arrow-up-outline"></ion-icon>
+                    </div>
+                    <div class="ion-text-start font-text">
+                       درآمد و هزینه
+                    </div>
+                </div>
+            </ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <div class="ion-text-start">
+                            <p class="ion-text-end">{{presentNumber}}</p>
+                            <p class="ion-text-end">{{exitNumber}}</p>
+                        </div>
+                    </ion-col>
+                    <ion-col >
+                        <div class="ion-text-end">
+                            <h3>درامد</h3>
+                            <h3>هزینه</h3>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
