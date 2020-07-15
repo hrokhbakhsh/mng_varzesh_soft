@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppServiceService} from '../../services/app-service.service';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,7 +14,8 @@ export class HomePage implements OnInit {
   exitNumber = 0 ;
   SumTotalAmount_Receipt = 0 ;
   functionTotalAmount = 0;
-  constructor(private service: AppServiceService) { }
+    managerName = localStorage.getItem('name');
+  constructor(private service: AppServiceService , private router: Router) { }
 
   ngOnInit() {
     const res = this.service.getAllReport().subscribe(
@@ -23,6 +25,7 @@ export class HomePage implements OnInit {
             this.exitNumber = res.Result.ExitedMemberCount ;
               this.SumTotalAmount_Receipt = res.Result.SumTotalAmount_Receipt ;
               this.functionTotalAmount= res.Result.SumTotalAmount_Creditor ;
+
           }
         } ,
         err => {
@@ -33,5 +36,9 @@ export class HomePage implements OnInit {
 
     logout() {
         this.service.logout();
+    }
+
+    reciveReport() {
+        this.router.navigate(['/recive-report']);
     }
 }

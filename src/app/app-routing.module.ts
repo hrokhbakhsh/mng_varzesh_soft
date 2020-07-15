@@ -28,7 +28,19 @@ const routes: Routes = [
     path: 'home',
     canActivate: [AuthGuard] ,
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },  {
+    path: 'recive-report',
+    loadChildren: () => import('./pages/recive-report/recive-report.module').then( m => m.ReciveReportPageModule)
+  },
+  {
+    path: 'reciption-situation',
+    loadChildren: () => import('./pages/reciption-situation/reciption-situation.module').then( m => m.ReciptionSituationPageModule)
+  },
+  {
+    path: 'functionality',
+    loadChildren: () => import('./pages/functionality/functionality.module').then( m => m.FunctionalityPageModule)
   }
+
 ];
 
 @NgModule({

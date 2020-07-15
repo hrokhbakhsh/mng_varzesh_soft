@@ -11,6 +11,9 @@
     </ion-toolbar>
 </ion-header>
 <ion-content class="main">
+    <div style="" class="name-box">
+        {{managerName}}
+    </div>
 
     <ion-card>
         <ion-card-header>
@@ -49,7 +52,7 @@
         </ion-card-content>
     </ion-card>
 
-    <ion-card>
+    <ion-card (click)="reciveReport()">
         <ion-card-header>
             <ion-card-title>
 

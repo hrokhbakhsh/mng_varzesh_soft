@@ -17,17 +17,22 @@ export class AppComponent implements OnInit {
     {
       title: 'گزارشات',
       url: 'home',
-      icon: 'heart'
+      icon: 'home'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'وضعیت پذیرش',
+      url: '/reciption-situation',
+      icon: 'receipt'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'گزارش دریافتی',
+      url: '/recive-report',
+      icon: 'card'
+    },
+    {
+      title: 'گزارش عملکرد',
+      url: '/functionality',
+      icon: 'bar-chart'
     },
     {
       title: 'Spam',

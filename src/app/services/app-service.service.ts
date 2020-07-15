@@ -37,8 +37,9 @@ export class AppServiceService {
 
         }
     }
-    storeUserId(id){
+    storeUserId(id , name){
         localStorage.setItem('userId', id) ;
+        localStorage.setItem('name' , name);
     }
     isLogin(): boolean {
         return localStorage.getItem('userId') != null;
