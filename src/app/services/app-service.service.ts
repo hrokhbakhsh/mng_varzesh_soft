@@ -12,7 +12,7 @@ import {ResponseModel} from './response-model';
 export class AppServiceService {
 
     packageUrl: string = null;
-
+     url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
     constructor(private http: HttpClient) {
     }
 
@@ -22,8 +22,8 @@ export class AppServiceService {
 
 
     authUser(data: any): Observable<any> {
-        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
-        return this.http.post<any>(`${url}/mng_login`, data);
+        //const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.post<any>(`${this.url}/mng_login`, data);
     }
 
     async storeUrl(id) {
@@ -55,8 +55,13 @@ export class AppServiceService {
     }
 
     getAllReport(): Observable<ResponseModel>{
-        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
-        return this.http.get<ResponseModel>(`${url}/mng_get_all_report_status`);
+        //const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.get<ResponseModel>(`${this.url}/mng_get_all_report_status`);
+    }
+
+    getAllUnite(): Observable<ResponseModel>{
+        // @ts-ignore
+        return this.http.post<ResponseModel>(`${this.url}/get_organization_unit`);
     }
 
 }
