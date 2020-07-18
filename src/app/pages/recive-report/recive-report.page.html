@@ -7,10 +7,19 @@
   <ion-content class="main">
     <ion-card>
       <ion-card-header>
-        <ion-card-title style="display: flex" class="ion-justify-content-center">
-
+        <ion-card-title (click)="filter()" style="display: flex" class="ion-justify-content-center">
+         فیلتر
         </ion-card-title>
       </ion-card-header>
+      <ion-card-content style="display: block" class="ion-justify-content-between" *ngIf="filterAll">
+        <div>
+          <ion-button color="danger" fill="outline" expand="full" (click)="selectPackage()">انتخاب مجموعه</ion-button>
+
+        </div>
+        <div>
+
+        </div>
+      </ion-card-content>
     </ion-card>
 <ion-card>
   <ion-card-header>
