@@ -13,11 +13,27 @@
       </ion-card-header>
       <ion-card-content style="display: block" class="ion-justify-content-between" *ngIf="filterAll">
         <div>
-          <ion-button color="danger" fill="outline" expand="full" (click)="selectPackage()">انتخاب مجموعه</ion-button>
-
+          <ion-item dir="rtl" (click)="selectPackage()">
+            <ion-label >
+              انتخاب مجموعه
+            </ion-label>
+            <ion-text >
+              {{unitName}}
+            </ion-text>
+          </ion-item>
         </div>
         <div>
-
+          <ion-item dir="rtl">
+            <ion-label>از تاریخ</ion-label>
+            <ion-datetime value="1397-12-15T13:47:20.789" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
+          </ion-item>
+          <ion-item dir="rtl">
+            <ion-label>تا تاریخ</ion-label>
+            <ion-datetime value="1397-12-15T13:47:20.789" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
+          </ion-item>
+        </div>
+        <div>
+          <ion-button color="danger" fill="outline" expand="full" (click)="filterAction()">اعمال فیلتر</ion-button>
         </div>
       </ion-card-content>
     </ion-card>

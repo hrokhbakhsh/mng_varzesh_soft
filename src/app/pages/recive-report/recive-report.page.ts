@@ -11,7 +11,10 @@ import {AllUnit} from '../../services/all-unit';
 export class ReciveReportPage implements OnInit {
     allReceive = 21000000;
     filterAll = false ;
+    unitId = 0 ;
+    unitName = 'سازمان';
     input = {data: []};
+    customYearValues = [1395 , 1396, 1397 , 1398, 1399, 1400];
   constructor(private service: AppServiceService , public alertController: AlertController) {
       this.service.getAllUnite().subscribe(
           res => {
@@ -47,7 +50,10 @@ export class ReciveReportPage implements OnInit {
                 }, {
                     text: 'Ok',
                     handler: (e) => {
-                        console.log(e);
+
+                         this.unitName = this.input.data.find(x => x.ID === e);
+                        this.unitId = e ;
+                        console.log(this.unitName);
                     }
                 }
             ]
@@ -59,5 +65,9 @@ export class ReciveReportPage implements OnInit {
     filter() {
         this.filterAll = !this.filterAll ;
         console.log(this.filterAll);
+    }
+
+    filterAction() {
+        console.log(this.unitId);
     }
 }
