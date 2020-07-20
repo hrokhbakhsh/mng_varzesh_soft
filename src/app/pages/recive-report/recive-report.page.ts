@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AppServiceService} from '../../services/app-service.service';
 import {AlertController} from '@ionic/angular';
-import {AllUnit} from '../../services/all-unit';
+
+
 
 @Component({
   selector: 'app-recive-report',
@@ -21,7 +22,7 @@ export class ReciveReportPage implements OnInit {
               if (res.status){
                   for (const entry of res.Result) {
                       // console.log(entry.Name);
-                      this.input.data.push({name: entry.ID, type: 'radio', label: entry.Name, value:  entry.ID});
+                      this.input.data.push({name: entry.ID, type: 'radio', label: entry.Name, value:  entry});
                   }
               }
           }
@@ -32,9 +33,6 @@ export class ReciveReportPage implements OnInit {
   }
 
     async selectPackage() {
-
-
-
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
             header: 'Radio',
@@ -50,10 +48,8 @@ export class ReciveReportPage implements OnInit {
                 }, {
                     text: 'Ok',
                     handler: (e) => {
-
-                         this.unitName = this.input.data.find(x => x.ID === e);
-                        this.unitId = e ;
-                        console.log(this.unitName);
+                        this.unitName = e.Name;
+                        this.unitId = e.ID ;
                     }
                 }
             ]
