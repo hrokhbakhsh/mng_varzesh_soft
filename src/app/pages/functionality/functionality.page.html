@@ -1,5 +1,15 @@
 <ion-header>
-  <app-header></app-header>
+  <ion-toolbar class="no-bg">
+
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="['/home']"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">گزارشات عملکرد</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content>

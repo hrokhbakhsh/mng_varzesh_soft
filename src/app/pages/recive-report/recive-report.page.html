@@ -1,5 +1,15 @@
 <ion-header>
-  <app-header></app-header>
+  <ion-toolbar class="no-bg">
+
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="['/home']"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> گزارشات دریافتی </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
@@ -25,15 +35,15 @@
         <div>
           <ion-item dir="rtl">
             <ion-label>از تاریخ</ion-label>
-            <ion-datetime value="1397-12-15T13:47:20.789" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
+            <ion-datetime value="1397-12-15T13:47:20.789" displayFormat="YYYY/MM/DD"  [pickerOptions]="fromPickerOptions" pickerFormat="DDD MM YYYY" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
           </ion-item>
           <ion-item dir="rtl">
             <ion-label>تا تاریخ</ion-label>
-            <ion-datetime value="1397-12-15T13:47:20.789" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
+            <ion-datetime [value]="m" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" [pickerOptions]="untilPickerOptions" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
           </ion-item>
         </div>
         <div>
-          <ion-button color="danger" fill="outline" expand="full" (click)="filterAction()">اعمال فیلتر</ion-button>
+          <ion-button color="danger" fill="outline" expand="full" (click)="filterAction()" *ngIf="data.organization_unit">اعمال فیلتر</ion-button>
         </div>
       </ion-card-content>
     </ion-card>

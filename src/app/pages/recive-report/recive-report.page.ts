@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppServiceService} from '../../services/app-service.service';
 import {AlertController} from '@ionic/angular';
-
+import * as moment from 'jalali-moment';
 
 
 @Component({
@@ -12,11 +12,46 @@ import {AlertController} from '@ionic/angular';
 export class ReciveReportPage implements OnInit {
     allReceive = 21000000;
     filterAll = false ;
-    unitId = 0 ;
     unitName = 'سازمان';
+    m = moment().locale('fa').format('YYYY-MM-DD');
     input = {data: []};
     customYearValues = [1395 , 1396, 1397 , 1398, 1399, 1400];
+    fromPickerOptions: any;
+    untilPickerOptions: any;
+    data ={
+        from_date: '1397-1-1' ,
+        to_date: this.m ,
+        organization_unit: ''
+    };
   constructor(private service: AppServiceService , public alertController: AlertController) {
+      this.untilPickerOptions = {
+          buttons: [{
+              text: 'Save',
+              handler: (e) => {
+                  this.data.to_date = e.year.value + '-' + e.month.value + '-' + e.day.value ;
+              }
+          }, {
+              text: 'لغو',
+              handler: () => {
+                  console.log('Clicked Log. Do not Dismiss.');
+                  return false;
+              }
+          }]
+      };
+      this.fromPickerOptions = {
+          buttons: [{
+              text: 'Save',
+              handler: (e) => {
+                  this.data.from_date =e.year.value + '-' + e.month.value + '-' + e.day.value ;
+              }
+          }, {
+              text: 'لغو',
+              handler: () => {
+                  console.log('Clicked Log. Do not Dismiss.');
+                  return false;
+              }
+          }]
+      };
       this.service.getAllUnite().subscribe(
           res => {
               if (res.status){
@@ -27,9 +62,11 @@ export class ReciveReportPage implements OnInit {
               }
           }
       );
+
   }
 
   ngOnInit() {
+
   }
 
     async selectPackage() {
@@ -48,8 +85,9 @@ export class ReciveReportPage implements OnInit {
                 }, {
                     text: 'Ok',
                     handler: (e) => {
+
                         this.unitName = e.Name;
-                        this.unitId = e.ID ;
+                        this.data.organization_unit = e.ID ;
                     }
                 }
             ]
@@ -64,6 +102,6 @@ export class ReciveReportPage implements OnInit {
     }
 
     filterAction() {
-        console.log(this.unitId);
+        console.log(this.data);
     }
 }

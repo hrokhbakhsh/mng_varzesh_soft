@@ -1,7 +1,61 @@
 <ion-header>
-<app-header></app-header>
+    <ion-toolbar class="no-bg">
+
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]="['/home']"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">گزارش وضعیت پذیرش</ion-title>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
 
+
+<ion-content class="main">
+<ion-card>
+    <ion-header dir="rtl">
+        افراد   در مجموعه
+    </ion-header>
+
+        <ion-card-content style="display: flex" class="ion-justify-content-between">
+            <div>
+                <ion-icon name="arrow-redo-circle-outline"></ion-icon>
+            </div>
+            <div>
+                {{presentNumber}}نفر
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-header dir="rtl">
+           افراد خارج شده
+        </ion-header>
+
+        <ion-card-content style="display: flex" class="ion-justify-content-between">
+            <div>
+                <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+
+            </div>
+            <div>
+                {{exitNumber}}نفر
+            </div>
+        </ion-card-content>
+    </ion-card><ion-card>
+    <ion-header dir="rtl">
+        مجموع افراد
+    </ion-header>
+
+    <ion-card-content style="display: flex" class="ion-justify-content-between">
+        <div>
+            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+            <ion-icon name="arrow-redo-circle-outline"></ion-icon>
+        </div>
+        <div>
+             {{all}}نفر
+        </div>
+    </ion-card-content>
+</ion-card>
 </ion-content>
