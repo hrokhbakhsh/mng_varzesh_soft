@@ -16,10 +16,6 @@
             <ion-icon name="information-circle" size="small"></ion-icon>
             <span>شماره کد خود را بدرستی وارد کنید.</span>
           </div>
-          <div *ngIf="err && getFormIP.valid ">
-            <ion-icon name="information-circle" size="small"></ion-icon>
-            <span>شماره کد وجود ندارد</span>
-          </div>
         </div>
         <ion-button  [disabled]="loading" type="submit" type="submit" class="button" fill="outline" expand="block" color="danger">
           <ion-spinner *ngIf="loading" ></ion-spinner>

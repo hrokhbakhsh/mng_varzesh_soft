@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'jalali-moment';
 import {AppServiceService} from '../../services/app-service.service';
 import {AlertController} from '@ionic/angular';
-import * as moment from 'jalali-moment';
+
+
 
 
 @Component({
@@ -10,66 +12,63 @@ import * as moment from 'jalali-moment';
   styleUrls: ['./recive-report.page.scss'],
 })
 export class ReciveReportPage implements OnInit {
-    allReceive = 21000000;
-    filterAll = false ;
-    unitName = 'سازمان';
     m = moment().locale('fa').format('YYYY-MM-DD');
-    input = {data: []};
-    customYearValues = [1395 , 1396, 1397 , 1398, 1399, 1400];
-    fromPickerOptions: any;
-    untilPickerOptions: any;
-    data ={
+    data = {
         from_date: '1397-1-1' ,
         to_date: this.m ,
         organization_unit: ''
     };
-  constructor(private service: AppServiceService , public alertController: AlertController) {
-      this.untilPickerOptions = {
-          buttons: [{
-              text: 'Save',
-              handler: (e) => {
-                  this.data.to_date = e.year.value + '-' + e.month.value + '-' + e.day.value ;
-              }
-          }, {
-              text: 'لغو',
-              handler: () => {
-                  console.log('Clicked Log. Do not Dismiss.');
-                  return false;
-              }
-          }]
-      };
-      this.fromPickerOptions = {
-          buttons: [{
-              text: 'Save',
-              handler: (e) => {
-                  this.data.from_date =e.year.value + '-' + e.month.value + '-' + e.day.value ;
-              }
-          }, {
-              text: 'لغو',
-              handler: () => {
-                  console.log('Clicked Log. Do not Dismiss.');
-                  return false;
-              }
-          }]
-      };
-      this.service.getAllUnite().subscribe(
-          res => {
-              if (res.status){
-                  for (const entry of res.Result) {
-                      // console.log(entry.Name);
-                      this.input.data.push({name: entry.ID, type: 'radio', label: entry.Name, value:  entry});
-                  }
-              }
-          }
-      );
-
-  }
-
-  ngOnInit() {
-
+    filterActive = false;
+    untilPickerOptions: any;
+    fromPickerOptions: any;
+    customYearValues = [1395 , 1396, 1397 , 1398, 1399, 1400];
+    unitName = '';
+    input = {data: []};
+    constructor(private service: AppServiceService , public alertController: AlertController ) {
+        this.service.getAllUnite().subscribe(
+            res => {
+                if (res.status){
+                    for (const entry of res.Result) {
+                        // console.log(entry.Name);
+                        this.input.data.push({name: entry.ID, type: 'radio', label: entry.Name, value:  entry});
+                    }
+                }
+            }
+        );
+        this.untilPickerOptions = {
+            buttons: [{
+                text: 'ذخیره',
+                handler: (e) => {
+                    this.data.to_date = e.year.value + '-' + e.month.value + '-' + e.day.value ;
+                    // console.log(this.data);
+                }
+            }, {
+                text: 'لغو',
+                handler: () => {
+                    this.untilPickerOptions.dismiss();
+                    return false;
+                }
+            }]
+        };
+        this.fromPickerOptions = {
+            buttons: [{
+                text: 'ذخیره',
+                handler: (e) => {
+                    this.data.from_date = e.year.value + '-' + e.month.value + '-' + e.day.value ;
+                    // console.log(this.data);
+                }
+            }, {
+                text: 'لغو',
+                handler: () => {
+                    this.fromPickerOptions.dismiss();
+                    return false;
+                }
+            }]
+        };
   }
 
     async selectPackage() {
+
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
             header: 'Radio',
@@ -85,7 +84,6 @@ export class ReciveReportPage implements OnInit {
                 }, {
                     text: 'Ok',
                     handler: (e) => {
-
                         this.unitName = e.Name;
                         this.data.organization_unit = e.ID ;
                     }
@@ -95,13 +93,13 @@ export class ReciveReportPage implements OnInit {
 
         await alert.present();
     }
-
-    filter() {
-        this.filterAll = !this.filterAll ;
-        console.log(this.filterAll);
-    }
+  ngOnInit() {
+  }
 
     filterAction() {
-        console.log(this.data);
+    }
+
+    filter() {
+        this.filterActive = !this.filterActive ;
     }
 }

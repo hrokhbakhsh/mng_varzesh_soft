@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AppServiceService} from '../../services/app-service.service';
 import {IpModel} from '../../services/ip-model';
 import {Router} from '@angular/router';
-import {MenuController, ViewWillEnter} from "@ionic/angular";
+import {MenuController, ToastController, ViewWillEnter} from '@ionic/angular';
 
 @Component({
     selector: 'app-get-ip',
@@ -15,10 +15,9 @@ export class GetIpPage implements OnInit, ViewWillEnter {
     private getFormIP: FormGroup;
     loading = false;
     isSubmit = false;
-    err = false;
 
 
-    constructor(public menuCtrl: MenuController, private router: Router, private formBuilder: FormBuilder, private service: AppServiceService) {
+    constructor(public menuCtrl: MenuController, private router: Router, private formBuilder: FormBuilder, private service: AppServiceService , private toastController: ToastController) {
         this.getFormIP = this.formBuilder.group({
             codeIp: [null, [Validators.required, Validators.max(9999), Validators.min(1001)]]
         });
@@ -50,15 +49,15 @@ export class GetIpPage implements OnInit, ViewWillEnter {
                     if (ipModel) {
                         await this.service.storeUrl(id);
                         await this.router.navigate(['/login']);
-                        this.err = false
-                        this.loading = false
+                        this.loading = false;
                     } else {
                         this.loading = false;
-                        this.err = true;
+                        this.presentToast(' ای دی مجموعه یافت نشد ');
                     }
 
                 } else {
                     this.loading = false;
+                    this.presentToast(' عدم ارتباط با سرور ');
                 }
                 this.isSubmit = true;
 
@@ -69,5 +68,13 @@ export class GetIpPage implements OnInit, ViewWillEnter {
             }
         }
 
+    }
+    async presentToast(message) {
+        const toast = await this.toastController.create({
+            message,
+            duration: 2000 ,
+            cssClass : 'secondary'
+        });
+        await toast.present();
     }
 }

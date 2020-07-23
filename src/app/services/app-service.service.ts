@@ -54,14 +54,30 @@ export class AppServiceService {
     }
 
     getAllReport(): Observable<ResponseModel>{
-        let url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
         return this.http.get<ResponseModel>(`${url}/mng_get_all_report_status`);
     }
 
     getAllUnite(): Observable<ResponseModel>{
         // @ts-ignore
-        let url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
-        return this.http.post<ResponseModel>(`${url}/get_organization_unit`,{});
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.post<ResponseModel>(`${url}/get_organization_unit`, {});
     }
 
+    getPoolReceptionLimit(data: any): Observable<any>{
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.post<ResponseModel>(`${url}/mng_get_pool_reception_limit`, data);
+    }
+    getCreditorAmountLimit(data: any): Observable<ResponseModel>{
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.post<ResponseModel>(`${url}/mng_get_creditor_amounts_limit`, data);
+    }
+    getCreditorAmounDay(data: any): Observable<ResponseModel>{
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.post<ResponseModel>(`${url}/mng_get_creditor_amounts_today`, data);
+    }
+    getDebtorAmountsLimit(data: any): Observable<ResponseModel>{
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.post<ResponseModel>(`${url}/mng_get_debtor_amounts_limit`, data);
+    }
 }

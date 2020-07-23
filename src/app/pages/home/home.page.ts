@@ -45,4 +45,8 @@ export class HomePage implements OnInit {
     reciptionSituation() {
         this.router.navigate(['/reciption-situation']);
     }
+
+    functionalitiReport() {
+        this.router.navigate(['/functionality']);
+    }
 }

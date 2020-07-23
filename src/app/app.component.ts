@@ -33,11 +33,6 @@ export class AppComponent implements OnInit {
       title: 'گزارش عملکرد',
       url: '/functionality',
       icon: 'bar-chart'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AppServiceService} from '../../services/app-service.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {MenuController, ViewWillEnter} from "@ionic/angular";
+import {MenuController, ToastController, ViewWillEnter} from '@ionic/angular';
 
 @Component({
     selector: 'app-login',
@@ -14,8 +14,7 @@ export class LoginPage implements OnInit , ViewWillEnter {
     private form: FormGroup;
     loading = false;
     sSubmit = false;
-    err = false ;
-    constructor(public menuCtrl: MenuController ,private service: AppServiceService, private fb: FormBuilder ,  private router: Router) {
+    constructor( private toastController: ToastController  , public menuCtrl: MenuController , private service: AppServiceService, private fb: FormBuilder ,  private router: Router) {
 
         this.form = this.fb.group({
             user_name: ['', [Validators.required]],
@@ -44,17 +43,25 @@ export class LoginPage implements OnInit , ViewWillEnter {
                             this.loading = false ;
                         }
                         else {
-                            this.err = true ;
                             this.loading = false ;
-
+                            this.presentToast('اطلاعات وارده اشتباه هست');
                         }
                     } ,
                     err => {
                         this.loading = false ;
+                        this.presentToast('خطای ارتباط با سرور');
 
                     }
 
         );
         }
+    }
+    async presentToast(message) {
+        const toast = await this.toastController.create({
+            message,
+            duration: 2000 ,
+            cssClass : 'secondary'
+        });
+        await toast.present();
     }
 }
