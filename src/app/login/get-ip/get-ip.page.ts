@@ -4,14 +4,14 @@ import {AppServiceService} from '../../services/app-service.service';
 import {IpModel} from '../../services/ip-model';
 import {Router} from '@angular/router';
 import {MenuController, ToastController, ViewWillEnter} from '@ionic/angular';
-
+import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 @Component({
     selector: 'app-get-ip',
     templateUrl: './get-ip.page.html',
     styleUrls: ['./get-ip.page.scss'],
 })
 export class GetIpPage implements OnInit, ViewWillEnter {
-
+    faCoffee = faPaperPlane;
     private getFormIP: FormGroup;
     loading = false;
     isSubmit = false;

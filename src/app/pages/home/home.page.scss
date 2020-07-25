@@ -23,9 +23,7 @@ body {
   }
 }
 
-ion-content{
-  --background: url('/assets/back.jpg') no-repeat 100% 100%;
-}
+
 .ion-justify-content-end{
   display: flex;
 }
@@ -41,7 +39,6 @@ h3{
   height: 2em;
   width: 100%;
   background-color: white;
-  justify-content: center;
   font-size: x-large;
   font-family: Lalezar;
 }

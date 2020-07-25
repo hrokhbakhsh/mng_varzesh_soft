@@ -13,20 +13,46 @@
 </ion-header>
 
 <ion-content>
+  <ion-card  *ngFor="let data of dataFromModel">
+    <ion-card-title   dir="rtl">
+      {{data.OperationTitle}}
+    </ion-card-title>
+    <ion-card-content>
+      <ion-grid>
 
+
+
+        <ion-row>
+          <ion-col dir="rtl">
+            {{data.OperationCount}}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col dir="rtl">
+            {{data.TotalAmount}}
+          </ion-col>
+        </ion-row>
+
+
+
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 <ion-footer>
   <ion-toolbar >
-    <ion-button *ngIf="data.organization_unit" (click)="filterAction()" fill="outline" expand="block">
+    <ion-button *ngIf="data.organization_unit && filterActive" (click)="filterAction()" fill="outline" expand="block">
       اعمال فیلتر
     </ion-button>
     <ion-grid *ngIf="filterActive">
+
       <ion-row>
         <ion-col>
           <div>
             <ion-item dir="rtl">
-              <ion-label>تا تاریخ</ion-label>
-              <ion-datetime [value]="m" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" [pickerOptions]="untilPickerOptions" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
+              <ion-label>از تاریخ</ion-label>
+              <ion-datetime value="1397-12-15T13:47:20.789" displayFormat="YYYY/MM/DD"  [pickerOptions]="fromPickerOptions" pickerFormat="DDD MM YYYY" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
             </ion-item>
           </div>
         </ion-col>
@@ -35,8 +61,8 @@
         <ion-col>
           <div>
             <ion-item dir="rtl">
-              <ion-label>از تاریخ</ion-label>
-              <ion-datetime value="1397-12-15T13:47:20.789" displayFormat="YYYY/MM/DD"  [pickerOptions]="fromPickerOptions" pickerFormat="DDD MM YYYY" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
+              <ion-label>تا تاریخ</ion-label>
+              <ion-datetime [value]="m" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" [pickerOptions]="untilPickerOptions" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
             </ion-item>
           </div>
         </ion-col>

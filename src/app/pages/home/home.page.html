@@ -2,7 +2,7 @@
     <ion-toolbar class="no-bg">
 
         <ion-buttons slot="start">
-            <img class="logo-header ion-margin-start" height="24px" src="assets/icon/favicon.png"/>
+            <img class="logo-header ion-margin-start" height="24px" src="assets/logo.png"/>
         </ion-buttons>
         <ion-title class="ion-text-center">گزارشات</ion-title>
         <ion-buttons slot="end">
@@ -10,10 +10,16 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content class="main">
-    <div style="" class="name-box">
-        {{managerName}}
+<ion-content class="main background">
+    <div style="display: flex" class="ion-justify-content-center" dir="rtl">
+        <div style="padding-right: 5px" dir="rtl" class="name-box">
+            {{managerName}}
+        </div>
+        <div  style="padding-left: 5px" dir="ltr" class="name-box">
+            {{m}}
+        </div>
     </div>
+
 
 
     <ion-card (click)="reciptionSituation()">

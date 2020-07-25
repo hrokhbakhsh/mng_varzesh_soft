@@ -1,34 +1,40 @@
 <ion-content class="background">
-  <ion-card class="card">
-    <ion-card-header >
-      <ion-card-title class="title text-style" > احراز هویت</ion-card-title>
-    </ion-card-header>
-  `
-    <ion-card-content>
 
-      <form [formGroup]="form" (ngSubmit)="login()">
-        <ion-item>
-          <ion-label position="floating" class="text-style button"  >نام کاربری</ion-label>
-          <ion-input  formControlName="user_name" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating"  class="text-style button">رمز ورود</ion-label>
-          <ion-input  formControlName="password" type="password"></ion-input>
-        </ion-item>
-        <div class="validation-box">
-          <div *ngIf="form.invalid">&nbsp;</div>
-          <div *ngIf="form.invalid && sSubmit">
-            <ion-icon name="information-circle" size="small"></ion-icon>
-            <span>فیلد خالی را پر کنید</span>
-          </div>
+
+  <div class="container">
+
+    <ion-card>
+      <ion-card-header dir="auto">
+        <div style="display: flex" class="ion-justify-content-center">
+          <img height="100px" src="assets/logo.png">
         </div>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="form" (ngSubmit)="login()">
+          <ion-item class="item-input" >
+            <ion-label  position="floating" class="text-style button">نام کاربری</ion-label>
+            <ion-input  formControlName="user_name" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"  class="text-style button">رمز ورود</ion-label>
+            <ion-input  formControlName="password" type="password"></ion-input>
+          </ion-item>
+          <div class="validation-box">
+            <div *ngIf="form.invalid">&nbsp;</div>
+            <div *ngIf="form.invalid && sSubmit">
+              <ion-icon name="information-circle" size="small"></ion-icon>
+              <span>فیلد خالی را پر کنید</span>
+            </div>
+          </div>
+          <ion-button  type="submit" class="button"  expand="block" color="danger">
+            <ion-spinner *ngIf="loading" ></ion-spinner>
+            <span *ngIf="!loading"><fa-icon style="margin: 10px" [icon]="faSign"></fa-icon >ورود</span>
+          </ion-button>
+        </form>
 
-        <ion-button  type="submit" class="button" fill="outline" expand="block" color="danger">
-          <ion-spinner *ngIf="loading" ></ion-spinner>
-          <span *ngIf="!loading">ورود</span>
-        </ion-button>
-      </form>
-    </ion-card-content>
-  </ion-card>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
 
 </ion-content>

@@ -3,6 +3,7 @@ import {AppServiceService} from '../../services/app-service.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MenuController, ToastController, ViewWillEnter} from '@ionic/angular';
+import { faSignInAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-login',
@@ -11,7 +12,8 @@ import {MenuController, ToastController, ViewWillEnter} from '@ionic/angular';
 })
 export class LoginPage implements OnInit , ViewWillEnter {
 
-    private form: FormGroup;
+    faSign = faSignInAlt;
+    form: FormGroup;
     loading = false;
     sSubmit = false;
     constructor( private toastController: ToastController  , public menuCtrl: MenuController , private service: AppServiceService, private fb: FormBuilder ,  private router: Router) {

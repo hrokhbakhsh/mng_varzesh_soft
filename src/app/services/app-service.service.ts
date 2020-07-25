@@ -80,4 +80,8 @@ export class AppServiceService {
         const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
         return this.http.post<ResponseModel>(`${url}/mng_get_debtor_amounts_limit`, data);
     }
+    getDebtorAmountsDay(data: any): Observable<ResponseModel>{
+        const url = 'https://cors-anywhere.herokuapp.com/' + localStorage.getItem('url');
+        return this.http.post<ResponseModel>(`${url}/mng_get_debtor_amounts_today`, data);
+    }
 }

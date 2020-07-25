@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'jalali-moment';
 import {AppServiceService} from '../../services/app-service.service';
-import {AlertController} from '@ionic/angular';
+import {AlertController, ToastController} from '@ionic/angular';
+import {FunctinalityModel} from '../../services/functinality-model';
 
 
 
@@ -13,6 +14,7 @@ import {AlertController} from '@ionic/angular';
 })
 export class ReciveReportPage implements OnInit {
     m = moment().locale('fa').format('YYYY-MM-DD');
+    dataFromModel: FunctinalityModel[] = [];
     data = {
         from_date: '1397-1-1' ,
         to_date: this.m ,
@@ -24,7 +26,26 @@ export class ReciveReportPage implements OnInit {
     customYearValues = [1395 , 1396, 1397 , 1398, 1399, 1400];
     unitName = '';
     input = {data: []};
-    constructor(private service: AppServiceService , public alertController: AlertController ) {
+    constructor(private service: AppServiceService , public alertController: AlertController  , private toastController: ToastController ) {
+        this.service.getDebtorAmountsDay(this.data).subscribe(res => {
+            if (res.status){
+                if (res.Result.length !== 0 ){
+
+                    this.dataFromModel = res.Result ;
+                }
+                else {
+                    this.presentToast('اطلاعاتی وجود ندارد ');
+                    console.log(res);
+                    this.dataFromModel = [{
+                        TotalAmount: 0 ,
+                        OperationTitle: 'اطلاعاتی یافت نشد' ,
+                        OperationCount: 0
+                    }] ;
+                }
+            } else {
+                this.presentToast('اطلاعاتی وجود ندارد ');
+            }
+        });
         this.service.getAllUnite().subscribe(
             res => {
                 if (res.status){
@@ -75,14 +96,14 @@ export class ReciveReportPage implements OnInit {
             inputs: this.input.data,
             buttons: [
                 {
-                    text: 'Cancel',
+                    text: 'لغو',
                     role: 'cancel',
                     cssClass: 'secondary',
                     handler: () => {
                         console.log('Confirm Cancel');
                     }
                 }, {
-                    text: 'Ok',
+                    text: 'ثبت',
                     handler: (e) => {
                         this.unitName = e.Name;
                         this.data.organization_unit = e.ID ;
@@ -94,12 +115,49 @@ export class ReciveReportPage implements OnInit {
         await alert.present();
     }
   ngOnInit() {
+
   }
 
     filterAction() {
+        this.service.getDebtorAmountsLimit(this.data).subscribe(res => {
+            if (res.status){
+                if (res.Result.length !== 0){
+                    this.dataFromModel = res.Result ;
+                }
+                else {
+                    this.presentToast('اطلاعاتی وجود ندارد ');
+                    this.dataFromModel = [{
+                        TotalAmount: 0 ,
+                        OperationTitle: 'اطلاعاتی یافت نشد' ,
+                        OperationCount: 0
+                    }] ;
+                }
+            }
+            else {
+                this.presentToast('اطلاعاتی وجود ندارد ');
+                this.dataFromModel = [{
+                    TotalAmount: 0 ,
+                    OperationTitle: 'اطلاعاتی یافت نشد' ,
+                    OperationCount: 0
+                }] ;
+                this.presentToast('خطای ارتباط  ');
+            }
+        });
     }
 
     filter() {
         this.filterActive = !this.filterActive ;
+    }
+
+
+
+    async presentToast(message) {
+        const toast = await this.toastController.create({
+            message,
+            duration: 2000 ,
+            position: 'middle' ,
+            cssClass : 'secondary'
+        });
+        await toast.present();
     }
 }

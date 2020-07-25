@@ -9,6 +9,7 @@
 }
 ion-input{
   text-align: center;
+  margin-left: 0px;
 }
 .background{
 
@@ -20,6 +21,23 @@ ion-input{
                   hsl(215,30%,60%) 45%  /* blau */
   );
 }
-ion-card{
-  margin-top: 5em;
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100% ;
+}
+form{
+  width: 100%;
+}
+.item-input{
+  background-color: #0d0d0d;
+  opacity: 0.9;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.button{
+  font-family: Elham;
+  color: #2fdf75;
 }

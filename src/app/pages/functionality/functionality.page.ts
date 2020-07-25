@@ -21,24 +21,29 @@ export class FunctionalityPage implements OnInit {
     to_date: this.m ,
     organization_unit: ''
   };
+
   filterActive = false;
   unitName: string;
   constructor(private service: AppServiceService , public alertController: AlertController , private toastController: ToastController) {
     this.service.getCreditorAmounDay(this.data).subscribe(res => {
       if (res.status){
         if (res.Result.length !== 0){
-          console.log(res.Result.length);
+          // console.log(res.Result.length);
           this.dataFromModel = res.Result ;
         }
         else {
           this.presentToast('اطلاعاتی وجود ندارد');
-          this.dataFromModel = res.Result ;
+          this.dataFromModel = [{
+            TotalAmount: 0 ,
+            OperationTitle: 'اطلاعاتی یافت نشد' ,
+            OperationCount: 0
+          }] ;
         }
       }
       else {
         this.presentToast('خطای ارتباط با سرور');
       }
-    })
+    });
     this.untilPickerOptions = {
       buttons: [{
         text: 'ذخیره',
@@ -89,18 +94,18 @@ export class FunctionalityPage implements OnInit {
 
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Radio',
+      header: 'مجموعه ها',
       inputs: this.input.data,
       buttons: [
         {
-          text: 'Cancel',
+          text: 'لغو',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Ok',
+          text: 'ثبت',
           handler: (e) => {
             // console.log(this.data);
             this.unitName = e.Name;
@@ -123,6 +128,11 @@ export class FunctionalityPage implements OnInit {
         }
         else {
           this.presentToast('اطلاعاتی وجود ندارد');
+          this.dataFromModel = [{
+            TotalAmount: 0 ,
+            OperationTitle: 'اطلاعاتی یافت نشد' ,
+            OperationCount: 0
+          }] ;
         }
       }
       else {
@@ -132,8 +142,9 @@ export class FunctionalityPage implements OnInit {
   }
   async presentToast(message) {
     const toast = await this.toastController.create({
-      message: message,
+      message,
       duration: 2000 ,
+      position: 'middle' ,
       cssClass : 'secondary'
     });
     await toast.present();

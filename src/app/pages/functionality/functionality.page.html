@@ -43,20 +43,10 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar class="no-bg">
-    <ion-button *ngIf="data.organization_unit" (click)="filterAction()" fill="outline" expand="block">
+    <ion-button *ngIf="data.organization_unit && filterActive" (click)="filterAction()" fill="outline" expand="block">
       اعمال فیلتر
     </ion-button>
     <ion-grid *ngIf="filterActive">
-      <ion-row>
-        <ion-col>
-          <div>
-            <ion-item dir="rtl">
-              <ion-label>تا تاریخ</ion-label>
-              <ion-datetime [value]="m" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" [pickerOptions]="untilPickerOptions" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
       <ion-row>
         <ion-col>
           <div>
@@ -67,6 +57,17 @@
           </div>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-item dir="rtl">
+              <ion-label>تا تاریخ</ion-label>
+              <ion-datetime [value]="m" displayFormat="YYYY/MM/DD" pickerFormat="DDD MM YYYY" [pickerOptions]="untilPickerOptions" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" [yearValues]="customYearValues"></ion-datetime>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+
       <ion-row>
         <ion-col>
           <ion-item dir="rtl" (click)="selectPackage()">

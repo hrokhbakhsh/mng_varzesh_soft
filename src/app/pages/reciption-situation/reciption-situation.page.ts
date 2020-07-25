@@ -8,6 +8,7 @@ import * as moment from 'jalali-moment';
   styleUrls: ['./reciption-situation.page.scss'],
 })
 export class ReciptionSituationPage implements OnInit {
+
     m = moment().locale('fa').format('YYYY-MM-DD');
     input = {data: []};
     customYearValues = [1395 , 1396, 1397 , 1398, 1399, 1400];
@@ -91,18 +92,18 @@ export class ReciptionSituationPage implements OnInit {
 
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
-            header: 'Radio',
+            header: 'مجموعه ها',
             inputs: this.input.data,
             buttons: [
                 {
-                    text: 'Cancel',
+                    text: 'لغو',
                     role: 'cancel',
                     cssClass: 'secondary',
                     handler: () => {
                         console.log('Confirm Cancel');
                     }
                 }, {
-                    text: 'Ok',
+                    text: 'ثبت',
                     handler: (e) => {
                         this.unitName = e.Name;
                         this.data.organization_unit = e.ID ;
@@ -120,15 +121,16 @@ export class ReciptionSituationPage implements OnInit {
             if (res.status){
                 this.all = Number(res.AllReceptionedMemberCount);
             }else {
-                console.log('can not voonect');
+                // console.log('can not voonect');
                 this.presentToast('خطای ارتباط با سرور');
             }
         });
     }
     async presentToast(message) {
         const toast = await this.toastController.create({
-            message: message,
+            message,
             duration: 2000 ,
+            position: 'middle' ,
             cssClass : 'secondary'
         });
         await toast.present();
