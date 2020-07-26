@@ -1,0 +1,29 @@
+<ion-split-pane style="direction: rtl" contentId="main-content">
+    <ion-menu  contentId="main-content" side="end" type="push">
+        <ion-content color="primary">
+            <ion-list style="margin-top: 0;padding-top: 0" id="inbox-list">
+                <ion-list-header class=" ion-padding" color="light">
+                    <ion-label class="ion-text-center">
+                        <img height="100px" src="/assets/logo.svg"/>
+                        <h2>{{managerName}}</h2>
+                    </ion-label>
+                </ion-list-header>
+                <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+                    <ion-item  style="--background: transparent" (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" detail="false" [class.selected]="selectedIndex == i">
+                        <ion-icon color="success" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                        <ion-label color="success">{{ p.title }}</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item style="--background: transparent" (click)="logout()" routerDirection="root"  detail="false">
+                        <ion-icon  color="success" slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
+                        <ion-label color="success">خروج</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+
+
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-split-pane>

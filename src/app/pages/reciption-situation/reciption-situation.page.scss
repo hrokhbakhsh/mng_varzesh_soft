@@ -1,8 +1,15 @@
-.name-box{
-  display:flex ;
-  height: 2em;
-  width: 100%;
-  background-color: white;
-  font-size: x-large;
-  font-family: Lalezar;
+:host{
+  background:url("/assets/bg-1.jpg");
+  background-size: cover;
+  background-position: center bottom;
 }
+.background {
+  --background: rgba(255,255,255,0.5);
+}
+.mylist{
+  ion-item{
+    --background: rgba(255,255,255,0.9);
+  }
+
+}
+

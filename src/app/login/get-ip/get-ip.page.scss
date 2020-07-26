@@ -1,43 +1,48 @@
-.button{
-  font-family: Elham;
+:host{
+  background:url("/assets/bg-1.jpg");
+  background-size: cover;
+  background-position: center bottom;
 }
-.title{
-  font-family: Lalezar;
-}
-.text-style{
-  text-align: center;
-}
-ion-input{
-  text-align: center;
-  margin-left: 0px;
-}
-.background{
 
-  --background: repeating-linear-gradient(
-                  -45deg,
-                  hsl(215,30%,60%) 0%,  /* blau */
-                  hsl(120,30%,90%) 15%, /* grün */
-                  hsl(30,50%,90%) 30%,  /* rosa */
-                  hsl(215,30%,60%) 45%  /* blau */
-  );
+ion-input {
+  text-align: center;
 }
-.container{
+
+.background {
+  --background: rgba(255,255,255,0.5);
+}
+
+.mycontainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100% ;
-}
-form{
+  height: 100%;
   width: 100%;
 }
-.item-input{
-  background-color: #0d0d0d;
+
+form {
+  width: 100%;
+}
+
+.item-input {
+  --background: transparent;
   opacity: 0.9;
   margin-left: 5px;
   margin-right: 5px;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-color: #474749;
 }
-.button{
-  font-family: Elham;
-  color: #2fdf75;
+
+.button {
+  color: #474749;
+}
+.card-bg{
+  background: rgba(255,255,255,0.7)!important;
+  border: 2px solid #55a2ce;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  padding: 16px;
+  box-shadow: 0 8px 6px -6px rgba(0,0,0,0.3);
 }

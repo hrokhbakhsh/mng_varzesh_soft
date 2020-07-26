@@ -26,31 +26,6 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
-@font-face {
-  font-family: 'Lalezar';
-  src: url("./assets/font/Lalezar.otf");
-}
-@font-face {
-  font-family: 'Elham';
-  src: url("./assets/font/Elham.ttf");
-}
-@font-face {
-  font-family: 'Far_box_negative';
-  src: url("./assets/font/Far_Box_Negative.ttf");
-}
-@font-face {
-  font-family: 'Far_box';
-  src: url("./assets/font/Far_Box.ttf");
-}
-@font-face {
-  font-family: 'Far_box_outline';
-  src: url("./assets/font/Far_Box_Outline.ttf");
-}
-@font-face {
-  font-family: 'Far_box_shade';
-  src: url("./assets/font/Far_Box_Shade.ttf");
-}
-
 .validation-box{
   min-height: 15px;
   width: 100%;
@@ -66,7 +41,8 @@
 
 .secondary{
   text-align: center;
-  --background: red;
+  --background: rgba(255,255,255,0.9);
+  color: #000
 }
 .background{
 
@@ -77,4 +53,21 @@
                   hsl(30,50%,90%) 30%,  /* rosa */
                   hsl(215,30%,60%) 45%  /* blau */
   );
+}
+.item-has-focus.label-floating.sc-ion-label-md-h, .item-has-focus .label-floating.sc-ion-label-md-h, .item-has-placeholder.label-floating.sc-ion-label-md-h, .item-has-placeholder .label-floating.sc-ion-label-md-h, .item-has-value.label-floating.sc-ion-label-md-h, .item-has-value .label-floating.sc-ion-label-md-h{
+  text-align: right;
+}
+.container{
+  max-width: 320px;
+  margin: auto;
+}
+.ltr{
+  direction: ltr;
+}
+.rtl{
+  direction: rtl;
+}
+ion-list{
+  background: transparent!important;
+  --background: transparent;
 }

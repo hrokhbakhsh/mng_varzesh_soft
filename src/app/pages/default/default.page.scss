@@ -1,0 +1,23 @@
+
+body {
+  height: 100%;
+}
+
+@keyframes bg {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 0 200%;
+  }
+
+  100% {
+    background-position: 0 400%;
+  }
+}
+
+
+.ion-justify-content-end{
+  display: flex;
+}

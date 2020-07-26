@@ -14,7 +14,7 @@ import {SetIpService} from './services/set-ip.service';
 import {AuthGuard} from './guard/auth.guard';
 import {UnAuthGuard} from './guard/un-auth.guard';
 import {IpAuthGuard} from './guard/ip-auth.guard';
-import {ChangeToPersianService} from "./services/change-to-persian.service";
+
 
 @NgModule({
     declarations: [AppComponent],
@@ -34,7 +34,6 @@ import {ChangeToPersianService} from "./services/change-to-persian.service";
         AuthGuard,
         UnAuthGuard ,
         IpAuthGuard,
-        ChangeToPersianService ,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]

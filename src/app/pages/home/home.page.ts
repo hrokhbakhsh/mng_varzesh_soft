@@ -16,9 +16,10 @@ export class HomePage implements OnInit {
     exitNumber = 0;
     SumTotalAmount_Receipt = 0;
     functionTotalAmount = 0;
-    managerName = localStorage.getItem('name');
+
 
     constructor(private service: AppServiceService, private router: Router) {
+
     }
 
     ngOnInit() {
@@ -29,7 +30,6 @@ export class HomePage implements OnInit {
                     this.exitNumber = res.Result.ExitedMemberCount;
                     this.SumTotalAmount_Receipt = res.Result.SumTotalAmount_Receipt;
                     this.functionTotalAmount = res.Result.SumTotalAmount_Creditor;
-
                 }
             },
             err => {
@@ -37,20 +37,15 @@ export class HomePage implements OnInit {
         );
     }
 
-
-    logout() {
-        this.service.logout();
-    }
-
     reciveReport() {
-        this.router.navigate(['/recive-report']);
+        this.router.navigate(['/home/recive-report']);
     }
 
     reciptionSituation() {
-        this.router.navigate(['/reciption-situation']);
+        this.router.navigate(['/home/reciption-situation']);
     }
 
     functionalitiReport() {
-        this.router.navigate(['/functionality']);
+        this.router.navigate(['/home/functionality']);
     }
 }

@@ -1,44 +1,37 @@
 <ion-header>
   <ion-toolbar class="no-bg">
 
-    <ion-buttons slot="start">
-      <ion-back-button [defaultHref]="['/home']"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-back-button (click)="back()" [defaultHref]="['/home']"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center"> گزارشات دریافتی </ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
 
-<ion-content>
-  <ion-card  *ngFor="let data of dataFromModel">
-    <ion-card-title   dir="rtl">
-      {{data.OperationTitle}}
-    </ion-card-title>
-    <ion-card-content>
-      <ion-grid>
-
-
-
-        <ion-row>
-          <ion-col dir="rtl">
-            {{data.OperationCount}}
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col dir="rtl">
-            {{data.TotalAmount}}
-          </ion-col>
-        </ion-row>
-
-
-
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
+<ion-content class="background ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let model of dataFromModel">
+      <ion-label>
+        <h2>{{model.OperationTitle}}</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col dir="rtl">
+              {{model.OperationCount}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col dir="rtl">
+              {{model.TotalAmount | currency}} ریال
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
 <ion-footer>
   <ion-toolbar >
@@ -80,7 +73,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button (click)="filter()" expand="block">
+    <ion-button color="primary" (click)="filter()" expand="block">
       فیلتر
     </ion-button>
   </ion-toolbar>

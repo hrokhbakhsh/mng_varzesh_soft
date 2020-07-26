@@ -1,8 +1,7 @@
-html {
-  height: 100%;
-  background: linear-gradient(white, #4e4e4e, white);
-  background-size: .1rem 400%;
-  animation: bg 8s infinite;
+:host{
+  background:url("/assets/bg-1.jpg");
+  background-size: cover;
+  background-position: center bottom;
 }
 
 body {
@@ -27,12 +26,7 @@ body {
 .ion-justify-content-end{
   display: flex;
 }
-.font-text{
-  font-family: Lalezar;
-}
-h3{
-  font-family: Elham;
-}
+
 
 .name-box{
   display:flex ;
@@ -40,5 +34,13 @@ h3{
   width: 100%;
   background-color: white;
   font-size: x-large;
-  font-family: Lalezar;
+}
+.background {
+  --background: rgba(255,255,255,0.5);
+}
+.mylist{
+  ion-item{
+    --background: rgba(255,255,255,0.9);
+  }
+
 }
