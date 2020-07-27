@@ -21,7 +21,7 @@ const routes: Routes = [
             },
             {
                 path: 'functionality',
-                loadChildren: () => import('../functionality/functionality.page').then(value => value.FunctionalityPage)
+                loadChildren: () => import('../functionality/functionality.module').then(value => value.FunctionalityModule)
             }
         ],
 

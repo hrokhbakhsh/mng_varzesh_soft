@@ -7,7 +7,7 @@ import {IonicModule} from '@ionic/angular';
 import {DefaultRoutingModule} from './default-routing.module';
 
 import {DefaultPage} from './default.page';
-import {RouterModule} from '@angular/router';
+
 
 @NgModule({
     imports: [

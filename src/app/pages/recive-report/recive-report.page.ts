@@ -92,12 +92,12 @@ export class ReciveReportPage implements OnInit {
 
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
-            header: 'Radio',
+            header: 'مجموعه',
             inputs: this.input.data,
             buttons: [
                 {
                     text: 'لغو',
-                    role: 'cancel',
+                    role: 'لغو',
                     cssClass: 'secondary',
                     handler: () => {
                         console.log('Confirm Cancel');
