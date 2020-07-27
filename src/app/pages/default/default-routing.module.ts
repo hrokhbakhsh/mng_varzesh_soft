@@ -1,10 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {DefaultPage} from './default.page';
-import {HomePage} from '../home/home.page';
-import {ReciveReportPage} from '../recive-report/recive-report.page';
-import {ReciptionSituationPage} from '../reciption-situation/reciption-situation.page';
-import {FunctionalityPage} from '../functionality/functionality.page';
 
 const routes: Routes = [
     {
@@ -13,19 +9,19 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component:HomePage
+                loadChildren: () => import('../home/home.module').then(value => value.HomeModule)
             },
             {
                 path: 'recive-report',
-                component:ReciveReportPage
+                loadChildren: () => import('../recive-report/recive.module').then(value => value.ReciveModule)
             },
             {
                 path: 'reciption-situation',
-                component:ReciptionSituationPage
+                loadChildren: () => import('../reciption-situation/reciption.module').then(value => value.ReciptionModule)
             },
             {
                 path: 'functionality',
-                component:FunctionalityPage
+                loadChildren: () => import('../functionality/functionality.page').then(value => value.FunctionalityPage)
             }
         ],
 
