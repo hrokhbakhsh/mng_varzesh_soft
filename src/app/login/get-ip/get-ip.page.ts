@@ -13,7 +13,7 @@ import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 })
 export class GetIpPage implements OnInit {
     faCoffee = faPaperPlane;
-    private getFormIP: FormGroup;
+    getFormIP: FormGroup;
     loading = false;
     isSubmit = false;
 

@@ -14,6 +14,8 @@ import {SetIpService} from './services/set-ip.service';
 import {AuthGuard} from './guard/auth.guard';
 import {UnAuthGuard} from './guard/un-auth.guard';
 import {IpAuthGuard} from './guard/ip-auth.guard';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import {IpAuthGuard} from './guard/ip-auth.guard';
         IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule ,
-        FontAwesomeModule
+        FontAwesomeModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [
         StatusBar,
