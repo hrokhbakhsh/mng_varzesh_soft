@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {RouterModule} from '@angular/router';
 import {ReciveReportPage} from './recive-report.page';
-
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 const routs = [
     {
         path: '',
@@ -18,6 +18,7 @@ const routs = [
         CommonModule,
         FormsModule,
         IonicModule,
+        FontAwesomeModule ,
         RouterModule.forChild(routs),
     ],
     declarations: [ReciveReportPage]

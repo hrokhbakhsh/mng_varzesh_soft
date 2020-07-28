@@ -3,7 +3,7 @@ import {AppServiceService} from '../../services/app-service.service';
 import {AlertController, ToastController} from '@ionic/angular';
 import * as moment from 'jalali-moment';
 import {Router} from '@angular/router';
-
+import { faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 @Component({
     selector: 'app-reciption-situation',
     templateUrl: './reciption-situation.page.html',
@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class ReciptionSituationPage implements OnInit {
 
+    faSignInAlt = faChevronLeft ;
     m = moment().locale('fa').format('YYYY-MM-DD');
     input = {data: []};
     customYearValues = [1395, 1396, 1397, 1398, 1399, 1400];
@@ -23,7 +24,7 @@ export class ReciptionSituationPage implements OnInit {
     };
 
     constructor(private service: AppServiceService, public alertController: AlertController
-        , private router: Router, private toastController: ToastController) {
+        ,       private router: Router, private toastController: ToastController) {
         this.untilPickerOptions = {
             buttons: [{
                 text: 'ذخیره',
@@ -58,6 +59,7 @@ export class ReciptionSituationPage implements OnInit {
             }, {
                 text: 'لغو',
                 handler: () => {
+                    this.untilPickerOptions.dismiss();
                     return false;
                 }
             }]

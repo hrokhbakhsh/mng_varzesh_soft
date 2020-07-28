@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {RouterModule} from '@angular/router';
 import {FunctionalityPage} from './functionality.page';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 const routs = [
     {
@@ -18,6 +19,7 @@ const routs = [
         CommonModule,
         FormsModule,
         IonicModule,
+        FontAwesomeModule ,
         RouterModule.forChild(routs),
     ],
     declarations: [FunctionalityPage]

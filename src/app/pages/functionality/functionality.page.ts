@@ -4,13 +4,14 @@ import {AppServiceService} from '../../services/app-service.service';
 import {AlertController, ToastController} from '@ionic/angular';
 import {FunctinalityModel} from '../../services/functinality-model';
 import {Router} from '@angular/router';
-
+import { faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 @Component({
     selector: 'app-functionality',
     templateUrl: './functionality.page.html',
     styleUrls: ['./functionality.page.scss'],
 })
 export class FunctionalityPage implements OnInit {
+    faChevronLeft = faChevronLeft;
     m = moment().locale('fa').format('YYYY-MM-DD');
     input = {data: []};
     customYearValues = [1395, 1396, 1397, 1398, 1399, 1400];
@@ -79,6 +80,7 @@ export class FunctionalityPage implements OnInit {
             }, {
                 text: 'لغو',
                 handler: () => {
+                    this.fromPickerOptions.dismiss();
                     return false;
                 }
             }]

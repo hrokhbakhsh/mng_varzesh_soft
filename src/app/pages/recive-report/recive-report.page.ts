@@ -3,6 +3,7 @@ import * as moment from 'jalali-moment';
 import {AppServiceService} from '../../services/app-service.service';
 import {AlertController, ToastController} from '@ionic/angular';
 import {FunctinalityModel} from '../../services/functinality-model';
+import { faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
 
 
@@ -12,6 +13,7 @@ import {Router} from '@angular/router';
     styleUrls: ['./recive-report.page.scss'],
 })
 export class ReciveReportPage implements OnInit {
+    faChevronLeft = faChevronLeft ;
     m = moment().locale('fa').format('YYYY-MM-DD');
     dataFromModel: FunctinalityModel[] = [];
     data = {

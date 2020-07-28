@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {RouterModule} from '@angular/router';
 import {HomePage} from './home.page';
+import {PersianPipesModule} from 'ngx-persian-pipe';
 
 const routs = [
     {
@@ -18,6 +19,7 @@ const routs = [
         CommonModule,
         FormsModule,
         IonicModule,
+        PersianPipesModule ,
         RouterModule.forChild(routs),
     ],
     declarations: [HomePage]

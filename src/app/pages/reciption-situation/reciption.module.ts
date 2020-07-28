@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {RouterModule} from '@angular/router';
 import {ReciptionSituationPage} from './reciption-situation.page';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 const routs = [
     {
@@ -19,6 +20,7 @@ const routs = [
         FormsModule,
         IonicModule,
         RouterModule.forChild(routs),
+        FontAwesomeModule,
     ],
     declarations: [ReciptionSituationPage]
 })
