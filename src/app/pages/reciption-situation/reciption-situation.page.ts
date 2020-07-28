@@ -126,6 +126,8 @@ export class ReciptionSituationPage implements OnInit {
     filterAction() {
         this.service.getPoolReceptionLimit(this.data).subscribe(res => {
             if (res.status) {
+                this.presentNumber = 0 ;
+                exitNumber = 0;
                 this.all = Number(res.AllReceptionedMemberCount);
             } else {
                 // console.log('can not voonect');
