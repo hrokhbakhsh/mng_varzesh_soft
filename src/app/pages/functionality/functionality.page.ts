@@ -11,6 +11,8 @@ import { faChevronLeft} from '@fortawesome/free-solid-svg-icons';
     styleUrls: ['./functionality.page.scss'],
 })
 export class FunctionalityPage implements OnInit {
+    loading = false;
+    loadingAction = false ;
     faChevronLeft = faChevronLeft;
     m = moment().locale('fa').format('YYYY-MM-DD');
     input = {data: []};
@@ -19,7 +21,7 @@ export class FunctionalityPage implements OnInit {
     untilPickerOptions: any;
     dataFromModel: FunctinalityModel[] = [];
     data = {
-        from_date: '1397-1-1',
+        from_date: this.m,
         to_date: this.m,
         organization_unit: ''
     };
@@ -29,6 +31,7 @@ export class FunctionalityPage implements OnInit {
 
     constructor(private service: AppServiceService, public alertController: AlertController,
                 private toastController: ToastController, private router: Router) {
+        this.loading = true ;
         this.service.getCreditorAmounDay(this.data).subscribe(res => {
             if (res.status) {
                 if (res.Result.length !== 0) {
@@ -66,6 +69,7 @@ export class FunctionalityPage implements OnInit {
                     for (const entry of res.Result) {
                         // console.log(entry.Name);
                         this.input.data.push({name: entry.ID, type: 'radio', label: entry.Name, value: entry});
+                        this.loading = false ;
                     }
                 }
             }
@@ -124,12 +128,17 @@ export class FunctionalityPage implements OnInit {
     }
 
     filterAction() {
+        this.loading = true ;
+        this.loadingAction = true;
+        this.filterActive = false ;
         this.service.getCreditorAmountLimit(this.data).subscribe(res => {
             if (res.status) {
 
                 if (res.Result.length !== 0) {
                     console.log(res.Result.length);
                     this.dataFromModel = res.Result;
+                    this.loading = false ;
+                    this.loadingAction = false;
                 } else {
                     this.presentToast('اطلاعاتی وجود ندارد');
                     this.dataFromModel = [{
@@ -137,9 +146,13 @@ export class FunctionalityPage implements OnInit {
                         OperationTitle: 'اطلاعاتی یافت نشد',
                         OperationCount: 0
                     }];
+                    this.loading = false ;
+                    this.loadingAction = false;
                 }
             } else {
                 this.presentToast('خطای ارتباط با سرور');
+                this.loading = false ;
+                this.loadingAction = false;
             }
         });
     }

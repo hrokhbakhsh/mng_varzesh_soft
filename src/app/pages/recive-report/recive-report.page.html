@@ -73,8 +73,9 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button color="primary" (click)="filter()" expand="block">
-      فیلتر
+    <ion-button [disabled]="loading" color="primary" (click)="filter()" expand="block">
+      <ion-spinner *ngIf="loading" ></ion-spinner>
+      <span *ngIf="!loading">فیلتر</span>
     </ion-button>
   </ion-toolbar>
 </ion-footer>

@@ -13,11 +13,12 @@ import {Router} from '@angular/router';
     styleUrls: ['./recive-report.page.scss'],
 })
 export class ReciveReportPage implements OnInit {
+    loading = false ;
     faChevronLeft = faChevronLeft ;
     m = moment().locale('fa').format('YYYY-MM-DD');
     dataFromModel: FunctinalityModel[] = [];
     data = {
-        from_date: '1397-1-1',
+        from_date: this.m,
         to_date: this.m,
         organization_unit: ''
     };
@@ -30,6 +31,7 @@ export class ReciveReportPage implements OnInit {
 
     constructor(private service: AppServiceService, public alertController: AlertController,
                 private toastController: ToastController, private router: Router) {
+        this.loading = true ;
         this.service.getDebtorAmountsDay(this.data).subscribe(res => {
             if (res.status) {
                 if (res.Result.length !== 0) {
@@ -54,6 +56,7 @@ export class ReciveReportPage implements OnInit {
                     for (const entry of res.Result) {
                         // console.log(entry.Name);
                         this.input.data.push({name: entry.ID, type: 'radio', label: entry.Name, value: entry});
+                        this.loading = false ;
                     }
                 }
             }
@@ -122,10 +125,13 @@ export class ReciveReportPage implements OnInit {
     }
 
     filterAction() {
+        this.loading = true ;
+        this.filterActive = false
         this.service.getDebtorAmountsLimit(this.data).subscribe(res => {
             if (res.status) {
                 if (res.Result.length !== 0) {
                     this.dataFromModel = res.Result;
+                    this.loading = false ;
                 } else {
                     this.presentToast('اطلاعاتی وجود ندارد ');
                     this.dataFromModel = [{
@@ -133,6 +139,7 @@ export class ReciveReportPage implements OnInit {
                         OperationTitle: 'اطلاعاتی یافت نشد',
                         OperationCount: 0
                     }];
+                    this.loading = false ;
                 }
             } else {
                 this.presentToast('اطلاعاتی وجود ندارد ');
@@ -141,7 +148,9 @@ export class ReciveReportPage implements OnInit {
                     OperationTitle: 'اطلاعاتی یافت نشد',
                     OperationCount: 0
                 }];
+                this.loading = false ;
                 this.presentToast('خطای ارتباط  ');
+                this.loading = false ;
             }
         });
     }

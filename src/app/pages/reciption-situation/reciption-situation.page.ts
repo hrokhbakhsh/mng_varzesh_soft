@@ -11,6 +11,7 @@ import { faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 })
 export class ReciptionSituationPage implements OnInit {
 
+    loading =false ;
     faSignInAlt = faChevronLeft ;
     m = moment().locale('fa').format('YYYY-MM-DD');
     input = {data: []};
@@ -18,13 +19,14 @@ export class ReciptionSituationPage implements OnInit {
     fromPickerOptions: any;
     untilPickerOptions: any;
     data = {
-        from_date: '1397-1-1',
+        from_date: this.m,
         to_date: this.m,
         organization_unit: ''
     };
 
     constructor(private service: AppServiceService, public alertController: AlertController
         ,       private router: Router, private toastController: ToastController) {
+        this.loading = true ;
         this.untilPickerOptions = {
             buttons: [{
                 text: 'ذخیره',
@@ -45,6 +47,7 @@ export class ReciptionSituationPage implements OnInit {
                     for (const entry of res.Result) {
                         // console.log(entry.Name);
                         this.input.data.push({name: entry.ID, type: 'radio', label: entry.Name, value: entry});
+                        this.loading = false ;
                     }
                 }
             }
@@ -124,14 +127,22 @@ export class ReciptionSituationPage implements OnInit {
     }
 
     filterAction() {
+        console.log(this.data);
+        this.loading =true ;
+        this.filterActive = false ;
         this.service.getPoolReceptionLimit(this.data).subscribe(res => {
             if (res.status) {
                 this.presentNumber = 0 ;
                 this.exitNumber = 0;
                 this.all = Number(res.AllReceptionedMemberCount);
+                this.loading =false ;
+                if (this.all === 0){
+                    this.presentToast('اطلاعاتی وجود ندارد');
+                }
             } else {
                 // console.log('can not voonect');
                 this.presentToast('خطای ارتباط با سرور');
+                this.loading =false ;
             }
         });
     }
