@@ -12,6 +12,7 @@ import * as moment from 'jalali-moment';
 export class HomePage implements OnInit {
 
     m = moment().locale('fa').format('YYYY-MM-DD');
+    date = moment().locale('fa').format(' dddd,D MMMM YYYY     ');
     presentNumber = 0;
     exitNumber = 0;
     SumTotalAmount_Receipt = 0;
